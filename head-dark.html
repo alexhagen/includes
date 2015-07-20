@@ -78,5 +78,16 @@
 
           </ul>
         </nav>
+        {% if page.search %}
+        <hgroup>
+          <div id="morphsearch" class="morphsearch">
+    				<form class="morphsearch-form">
+    					<input class="morphsearch-input" type="search" placeholder="Search..."/>
+    					<button class="morphsearch-submit" type="submit">Search</button>
+              <button class="filter" type="filter">Filter</button>
+    				</form>
+          </div>
+        </hgroup>
+        {% endif %}
       </div>
     </header>
