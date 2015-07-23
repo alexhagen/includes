@@ -97,11 +97,7 @@
         {% capture languages %}
           {% for code in page.codes %}
             {% unless array contains code.type %}
-              {% capture languagesstr %}
-                {{ languagesstr }};{{ code.type }}
-              {% endcapture %}
-              {{ code.type }};
-              {% assign array = languagesstr | split: ';' | sort %}
+              {{ code.type }};{% capture languagesstr %}{{ languagesstr }};{{ code.type }}{% endcapture %}{% assign array = languagesstr | split: ';' | sort %}
             {% endunless %}
           {% endfor %}
         {% endcapture %}
