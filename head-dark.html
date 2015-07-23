@@ -95,10 +95,10 @@
         {% capture languages %}
           {% assign last = '' %}
           {% for code in page.codes %}
-            {% if last != code.type %}
+            {% unless last == code.type %}
               {{ code.type }};
-            {% endif %}
-            {% assign last = code.type %}
+              {% assign last = code.type %}
+            {% endunless %}
           {% endfor %}
         {% endcapture %}
         {% assign sortedlanguages = languages | split: ';' | sort %}
