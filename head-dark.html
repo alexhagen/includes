@@ -107,10 +107,18 @@
       </div>
       <div class="dummy-column">
         <h2>Keywords</h2>
-        <a class="dummy-media-object" href="http://tympanus.net/codrops/2014/08/05/page-preloading-effect/">
-          <img src="img/thumbs/PagePreloadingEffect.png" alt="PagePreloadingEffect"/>
-          <h3>Page Preloading Effect</h3>
-        </a>
+        {% assign str = '' %}
+        {% assign array = str | split:';' | sort %}
+        {% capture keywords %}{% for code in page.codes %}{% assign localarray = code.keywords | split:',' | sort %}{% for keyword in localarray %}{% unless array contains keyword %}{{ keyword }};{% capture keywordsstr %}{{ keywordsstr }};{{ keyword }}{% endcapture %}{% assign array = keywordsstr | split: ';' | sort %}{% endunless %}{% endfor %}{% endfor %}{% endcapture %}
+        {% assign sortedkeywords = keywords | split: ';' | sort %}
+        {% for keyword in sortedkeywords %}
+          {% unless keyword == '' %}
+          <a class="dummy-media-object" href="http://twitter.com/SaraSoueidan">
+            <img class="round" src="http://0.gravatar.com/avatar/81b58502541f9445253f30497e53c280?s=50&d=identicon&r=G" alt="Sara Soueidan"/>
+            <h3>{{ keyword }}</h3>
+          </a>
+          {% endunless %}
+        {% endfor %}
       </div>
       <div class="dummy-column">
         <h2>Recent</h2>
