@@ -94,33 +94,15 @@
         <h2>Languages</h2>
         {% assign str = '' %}
         {% assign array = str | split:';' | sort %}
-        {% capture languages %}
-          {% for code in page.codes %}
-            {% unless array contains code.type %}
-              {{ code.type }};{% capture languagesstr %}{{ languagesstr }};{{ code.type }}{% endcapture %}{% assign array = languagesstr | split: ';' | sort %}
-            {% endunless %}
-          {% endfor %}
-        {% endcapture %}
-
-        {% comment %}
-        {% capture languages %}
-          {% assign last = '' %}
-          {% for code in page.codes %}
-            {% unless last == code.type %}
-              in the unless;
-              {{ code.type }};
-              {% assign last = code.type %}
-            {% endunless %}
-          {% endfor %}
-        {% endcapture %}
-        {% endcomment %}
-        <p>{{ languages }}</p>
+        {% capture languages %}{% for code in page.codes %}{% unless array contains code.type %}{{ code.type }};{% capture languagesstr %}{{ languagesstr }};{{ code.type }}{% endcapture %}{% assign array = languagesstr | split: ';' | sort %}{% endunless %}{% endfor %}{% endcapture %}
         {% assign sortedlanguages = languages | split: ';' | sort %}
         {% for language in sortedlanguages %}
+          {% unless language == '' %}
           <a class="dummy-media-object" href="http://twitter.com/SaraSoueidan">
             <img class="round" src="http://0.gravatar.com/avatar/81b58502541f9445253f30497e53c280?s=50&d=identicon&r=G" alt="Sara Soueidan"/>
             <h3>{{ language }}</h3>
           </a>
+          {% endunless %}
         {% endfor %}
       </div>
       <div class="dummy-column">
