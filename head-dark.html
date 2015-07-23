@@ -93,8 +93,12 @@
       <div class="dummy-column">
         <h2>Languages</h2>
         {% capture languages %}
+          {% assign last = '' %}
           {% for code in page.codes %}
-            {{ code.type }};
+            {% if last != code.type %}
+              {{ code.type }};
+            {% endif %}
+            {% assign last = code.type %}
           {% endfor %}
         {% endcapture %}
         {% assign sortedlanguages = languages | split: ';' | sort %}
