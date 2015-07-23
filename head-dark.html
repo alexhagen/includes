@@ -96,7 +96,13 @@
         {% assign array = str | split:';' | sort %}
         {% capture languages %}
           {% for code in page.codes %}
-            {% unless array contains code.type %}{% capture languagesstr %}{{ languagesstr }};{{ code.type }}{% endcapture %}{% assign array = languagesstr | split: ';' | sort %}{% endunless %}
+            {% unless array contains code.type %}
+              {% capture languagesstr %}
+                {{ languagesstr }};{{ code.type }}
+              {% endcapture %}
+              {{ code.type }};
+              {% assign array = languagesstr | split: ';' | sort %}
+            {% endunless %}
           {% endfor %}
         {% endcapture %}
 
@@ -111,8 +117,8 @@
             {% endunless %}
           {% endfor %}
         {% endcapture %}
-        <p>{{ languages }}</p>
         {% endcomment %}
+        <p>{{ languages }}</p>
         {% assign sortedlanguages = languages | split: ';' | sort %}
         {% for language in sortedlanguages %}
           <a class="dummy-media-object" href="http://twitter.com/SaraSoueidan">
