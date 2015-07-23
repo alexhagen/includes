@@ -96,6 +96,7 @@
           {% assign last = '' %}
           {% for code in page.codes %}
             {% unless last == code.type %}
+              in the unless;
               {{ code.type }};
               {% assign last = code.type %}
             {% endunless %}
