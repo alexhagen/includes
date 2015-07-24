@@ -83,6 +83,43 @@
 
 			})();
 		</script>
+
+    <script>
+    $(function(){
+      var $commitsList = $('#recent-repos');
+      var keyValuePairs = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&");
+      var x, params = {};
+      $.each(keyValuePairs, function(i, keyValue){
+        x = keyValue.split('=');
+        params[x[0]] = x[1];
+      });
+
+    params.owner = "alexhagen";
+
+      $.ajax( "https://api.github.com/users/" + params.owner + "/events?callback=callback", {
+        dataType: 'jsonp',
+        type: 'get',
+        data: {
+          per_page: params.limit || 10
+        },
+        success: function(response, textStatus, jqXHR) {
+          var data = response.data;
+          var repos = [];
+          $.each(data, function(i, commit){
+            if ( $.inArray(commit.repo.name,repos) < 0 ) {
+              var message = '';
+              if (commit.payload.size > 0 ) {
+                message = "<p class='recent-repos-message'>"+commit.payload.commits[0].message+"</p>";
+              }
+              $('<a class="dummy-media-object" href="'+commit.repo.url+'"><h4 class="recent-repos-name">'+commit.repo.name+'</h4>'+message+'<p class="recent-repos-time">'+$.timeago(commit.created_at)+'</p></a>').appendTo( $commitsList );
+              repos.push( commit.repo.name );
+            }
+          });
+        }
+      });
+    });
+    </script>
+
 {% endif %}
 
   </body>
