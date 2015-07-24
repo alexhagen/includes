@@ -100,7 +100,7 @@
         dataType: 'jsonp',
         type: 'get',
         data: {
-          per_page: params.limit || 10
+          per_page: params.limit || 20
         },
         success: function(response, textStatus, jqXHR) {
           var data = response.data;
@@ -112,6 +112,7 @@
                 message = "<p class='recent-repos-message'>"+commit.payload.commits[0].message+"</p>";
               }
               $('<a class="dummy-media-object" href="'+commit.repo.url+'"><h4 class="recent-repos-name">'+commit.repo.name+'</h4>'+message+'<p class="recent-repos-time">'+$.timeago(commit.created_at)+'</p></a>').appendTo( $commitsList );
+              // add that into the array so we know it's already been discussed
               repos.push( commit.repo.name );
             }
           });
