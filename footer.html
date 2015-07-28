@@ -125,7 +125,7 @@
     <script>
 
     closeSearch = function() {
-
+      var isOpen = true;
       var offsets = morphsearch.getBoundingClientRect();
       if( isOpen ) {
         classie.remove( morphSearch, 'open' );
