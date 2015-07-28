@@ -90,7 +90,7 @@
         {% assign sortedlanguages = languages | split: ';' | sort %}
         {% for language in sortedlanguages %}
           {% unless language == '' %}
-          <a class="dummy-media-object language" href="#">
+          <a class="dummy-media-object language" keyword="{{ language }}">
             <img class="round" src="{{ site.url }}/assets/img/{{ language }}.png" alt="{{ language }}"/>
             <h3>{{ language }}</h3>
           </a>
@@ -105,7 +105,7 @@
         {% assign sortedkeywords = keywords | split: ';' | sort %}
         {% for keyword in sortedkeywords %}
           {% unless keyword == '' %}
-          <a class="dummy-media-object keyword" href="#">
+          <a class="dummy-media-object keyword" keyword="{{ keyword }}">
             <h4>{{ keyword }}</h4>
           </a>
           {% endunless %}
