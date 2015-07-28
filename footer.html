@@ -126,6 +126,9 @@
 
     closeSearch = function() {
       var isOpen = true;
+      var morphSearch = document.getElementById( 'morphsearch' );
+      var input = morphSearch.querySelector( 'input.morphsearch-input' );
+      var ctrlClose = morphSearch.querySelector( 'span.morphsearch-close' );
       var offsets = morphsearch.getBoundingClientRect();
       if( isOpen ) {
         classie.remove( morphSearch, 'open' );
