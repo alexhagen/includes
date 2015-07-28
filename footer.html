@@ -125,9 +125,12 @@
     <script>
     $( document ).ready(function() {
       $('.language').click(function() {
+        toggleSearch;
         var keyword = $(this).attr('keyword');
-        $('div.code[keywords*="'+keyword+'"]').hide( "slow", function() {
-          alert( "Animation complete." );
+        $('div.code[keywords*="'+keyword+'"]').animate({
+          width: 0px
+        }, 5000, function() {
+          // Animation complete.
         });
       });
     });
