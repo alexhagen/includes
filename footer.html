@@ -124,40 +124,12 @@
     <!-- Script to filter by language when clicked -->
     <script>
 
-    toggleSearch = function(evt) {
-      // return if open and the input gets focused
-      if( evt.type.toLowerCase() === 'focus' && isOpen ) return false;
-
-      var offsets = morphsearch.getBoundingClientRect();
-      if( isOpen ) {
-        classie.remove( morphSearch, 'open' );
-
-        // trick to hide input text once the search overlay closes
-        // todo: hardcoded times, should be done after transition ends
-        if( input.value !== '' ) {
-          setTimeout(function() {
-            classie.add( morphSearch, 'hideInput' );
-            setTimeout(function() {
-              classie.remove( morphSearch, 'hideInput' );
-              input.value = '';
-            }, 300 );
-          }, 500);
-        }
-
-        input.blur();
-      }
-      else {
-        classie.add( morphSearch, 'open' );
-      }
-      isOpen = !isOpen;
-    };
-
     $( document ).ready(function() {
       $('.language').click(function() {
         toggleSearch();
         var keyword = $(this).attr('keyword');
         $('div.code[keywords*="'+keyword+'"]').animate({
-          width: 0px
+          width: 0,
         }, 5000, function() {
           // Animation complete.
         });
