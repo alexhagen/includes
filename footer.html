@@ -126,7 +126,7 @@
     $( document ).ready(function() {
       $('.language').click(function() {
         var keyword = $(this).attr('keyword');
-        $('div.code[keyword*="'+keyword+'"]').hide( "slow", function() {
+        $('div.code[keywords*="'+keyword+'"]').hide( "slow", function() {
           alert( "Animation complete." );
         });
       });
