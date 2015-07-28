@@ -124,9 +124,7 @@
     <!-- Script to filter by language when clicked -->
     <script>
 
-    toggleSearch = function(evt) {
-      // return if open and the input gets focused
-      if( evt.type.toLowerCase() === 'focus' && isOpen ) return false;
+    closeSearch = function() {
 
       var offsets = morphsearch.getBoundingClientRect();
       if( isOpen ) {
@@ -146,15 +144,12 @@
 
         input.blur();
       }
-      else {
-        classie.add( morphSearch, 'open' );
-      }
       isOpen = !isOpen;
     };
 
     $( document ).ready(function() {
       $('.language').click(function() {
-        toggleSearch();
+        closeSearch();
         var keyword = $(this).attr('keyword');
         $('div.code[keywords*="'+keyword+'"]').animate({
           width: 0,
