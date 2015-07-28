@@ -154,7 +154,7 @@
       $('.language').click(function() {
         closeSearch();
         var keyword = $(this).attr('keyword');
-        $('div.code[keywords*="'+keyword+'"]').parent().animate({
+        $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
           width: 0,
         }, 5000, function() {
           // Animation complete.
