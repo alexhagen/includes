@@ -90,7 +90,7 @@
         {% assign sortedlanguages = languages | split: ';' | sort %}
         {% for language in sortedlanguages %}
           {% unless language == '' %}
-          <a class="dummy-media-object" href="#">
+          <a class="dummy-media-object language" href="#">
             <img class="round" src="{{ site.url }}/assets/img/{{ language }}.png" alt="{{ language }}"/>
             <h3>{{ language }}</h3>
           </a>
