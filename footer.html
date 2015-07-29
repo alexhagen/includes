@@ -111,7 +111,7 @@
               if (commit.payload.size > 0 ) {
                 message = "<p class='recent-repos-message'>"+commit.payload.commits[0].message+"</p>";
               }
-              $('<a class="dummy-media-object" href="'+commit.repo.url+'"><h4 class="recent-repos-name">'+commit.repo.name+'</h4>'+message+'<p class="recent-repos-time">'+$.timeago(commit.created_at)+'</p></a>').appendTo( $commitsList );
+              $('<a class="dummy-media-object"><h4 class="recent-repos-name" keyword="'+commit.repo.name+'">'+commit.repo.name+'</h4>'+message+'<p class="recent-repos-time">'+$.timeago(commit.created_at)+'</p></a>').appendTo( $commitsList );
               // add that into the array so we know it's already been discussed
               repos.push( commit.repo.name );
             }
@@ -156,7 +156,31 @@
         var keyword = $(this).attr('keyword');
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
           width: 0,
-        }, 5000, function() {
+        }, 1000, function() {
+          // Animation complete.
+        });
+      });
+    });
+
+    $( document ).ready(function() {
+      $('.keyword').click(function() {
+        closeSearch();
+        var keyword = $(this).attr('keyword');
+        $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
+          width: 0,
+        }, 1000, function() {
+          // Animation complete.
+        });
+      });
+    });
+
+    $( document ).ready(function() {
+      $('.recent-repos-name').click(function() {
+        closeSearch();
+        var keyword = $(this).attr('keyword').replace("alexhagen/","");
+        $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
+          width: 0,
+        }, 1000, function() {
           // Animation complete.
         });
       });
