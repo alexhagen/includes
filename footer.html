@@ -175,7 +175,7 @@
     });
 
     $( document ).ready(function() {
-      $('.recent-repo').click(function() {
+      $('recent-repos').on('click', 'a.recent-repo', function() {
         closeSearch();
         var keyword = $(this).attr('keyword').replace("alexhagen/","");
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
