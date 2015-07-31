@@ -193,8 +193,7 @@
       $('#morphsearch form').submit(function(){
         closeSearch();
         var keyword = $( "input:first" ).val();
-        alert(keyword);
-        $('div.code').not('[keywords*="'+keyword+'",content*="'+keyword+'"]').parent().animate({
+        $('div.code').not('[keywords*="'+keyword+'", div.code:contains("'+keyword+'")]').parent().animate({
           width: 0,
         }, 1000, function() {
           // Animation complete.
