@@ -191,6 +191,7 @@
     <script>
     $( document ).ready(function() {
       $('#morphsearch form').submit(function(){
+        alert('submitted');
         closeSearch();
         var keyword = $( "input:first" ).val();
         $('div.code').not('[keywords*="'+keyword+'",content*="'+keyword+'"]').parent().animate({
