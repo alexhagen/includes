@@ -194,7 +194,7 @@
         event.preventDefault();
         closeSearch();
         var keyword = $( "input:first" ).val();
-        $('div.code').not('[keywords*="'+keyword+'",title*="'+keyword+'"]').parent().animate({
+        $('div.code').not('[keywords*="'+keyword+'"],[title*="'+keyword+'"]').parent().animate({
           width: 0,
         }, 1000, function() {
           // Animation complete.
