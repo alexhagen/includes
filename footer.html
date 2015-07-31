@@ -190,7 +190,8 @@
     <!-- actually implement the fuzzy search -->
     <script>
     $( document ).ready(function() {
-      $('.morphsearch-form').submit(function(){
+      $('#morphsearch form').submit(function(){
+        closeSearch();
         var keyword = $( "input:first" ).val();
         $('div.code').not('[keywords*="'+keyword+'",content*="'+keyword+'"]').parent().animate({
           width: 0,
