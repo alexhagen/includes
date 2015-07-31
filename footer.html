@@ -187,10 +187,11 @@
     });
     </script>
 
-    <!-- actually implement the fuzzy search -->
+    <!-- actually implement the strict search -->
     <script>
     $( document ).ready(function() {
-      $('#morphsearch form').submit(function(){
+      $('#morphsearch form').submit(function(event){
+        event.preventDefault();
         closeSearch();
         var keyword = $( "input:first" ).val();
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
