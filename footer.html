@@ -154,6 +154,7 @@
 
     $( document ).ready(function() {
       $('.language').click(function(evt) {
+        var isOpen = true;
         toggleSearch(evt);
         var keyword = $(this).attr('keyword');
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
@@ -166,6 +167,7 @@
 
     $( document ).ready(function() {
       $('.keyword').click(function(evt) {
+        var isOpen = true;
         toggleSearch(evt);
         var keyword = $(this).attr('keyword');
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
@@ -178,6 +180,7 @@
 
     $( document ).ready(function() {
       $('.recent-repos').on('click', 'a.recent-repo', function(evt) {
+        var isOpen = true;
         toggleSearch(evt);
         var keyword = $(this).attr('keyword').replace("alexhagen/","");
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
