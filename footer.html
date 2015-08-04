@@ -124,15 +124,11 @@
     <!-- Script to filter by language when clicked -->
     <script>
 
-    var morphSearch = document.getElementById( 'morphsearch' ),
-      input = morphSearch.querySelector( 'input.morphsearch-input' ),
-      ctrlClose = morphSearch.querySelector( 'span.morphsearch-close' ),
-      isOpen = isAnimating = false;
-
-    toggleSearch = function(evt) {
-      // return if open and the input gets focused
-      if( evt.type.toLowerCase() === 'focus' && isOpen ) return false;
-
+    closeSearch = function() {
+      var isOpen = true;
+      var morphSearch = document.getElementById( 'morphsearch' );
+      var input = morphSearch.querySelector( 'input.morphsearch-input' );
+      var ctrlClose = morphSearch.querySelector( 'span.morphsearch-close' );
       var offsets = morphsearch.getBoundingClientRect();
       if( isOpen ) {
         classie.remove( morphSearch, 'open' );
@@ -151,15 +147,12 @@
 
         input.blur();
       }
-      else {
-        classie.add( morphSearch, 'open' );
-      }
       isOpen = !isOpen;
     };
 
     $( document ).ready(function() {
-      $('.language').click(function(evt) {
-        toggleSearch(evt);
+      $('.language').click(function() {
+        closeSearch();
         var keyword = $(this).attr('keyword');
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
           width: 0,
@@ -170,8 +163,8 @@
     });
 
     $( document ).ready(function() {
-      $('.keyword').click(function(evt) {
-        toggleSearch(evt);
+      $('.keyword').click(function() {
+        closeSearch();
         var keyword = $(this).attr('keyword');
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
           width: 0,
@@ -182,8 +175,8 @@
     });
 
     $( document ).ready(function() {
-      $('.recent-repos').on('click', 'a.recent-repo', function(evt) {
-        toggleSearch(evt);
+      $('.recent-repos').on('click', 'a.recent-repo', function() {
+        closeSearch();
         var keyword = $(this).attr('keyword').replace("alexhagen/","");
         $('div.code').not('[keywords*="'+keyword+'"]').parent().animate({
           width: 0,
