@@ -69,7 +69,7 @@
         <nav role="navigation">
           <ul>
             {% for link in site.links %}
-                <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ site.url }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank"{% endif %}>{{ link.title }}</a></li>
+                <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ site.url }}{{ link.url }}{% endif %}" {% if link.external %}target="_blank"{% endif %}>{% if link.icon %}<img src="images/{{ link.icon }}" style="height: 12px;"/>{% else %}{{ link.title }}{% endif %}</a></li>
             {% endfor %}
 
           </ul>
