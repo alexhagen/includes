@@ -1,0 +1,12 @@
+{% for post in site.categories[include.cat] %}
+<li class="cell">
+    <a href="..{{post.url}}" type="{{post.type}}" keywords="{{post.type}},{{post.keywords}}">
+      <div class='title'>{% if post.long_title %}<div class='long-title'>{% endif %}{{post.title}}{% if post.long_title %}</div>{% endif %}</div>
+      <div class='date'>{{ post.date }}</div>
+      <div class='keywords'>{{ post.keywords }}</div>
+      <div class='type'>{{ post.type }}</div>
+      {% if post.description %}<div class='description'>{{ post.description | escape | strip | remove: '"' }}</div>{% endif %}
+      {% if post.image.feature %}<div class="cell-bg-image"  style="background-image: url({{ site.baseurl }}{{ post.image.feature }})"></div>{% endif %}
+  </a>
+</li>
+{% endfor %}
