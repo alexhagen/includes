@@ -4,16 +4,18 @@ MathJax.Hub.Config({
     inlineMath: [ ['$','$'], ['\\(','\\)'] ],
   },
   "HTML-CSS": {
-    linebreaks: { 
+    scale: 200,
+    linebreaks: {
       automatic: true,
-      width: "80% container", 
+      width: "100% container",
     }
   },
-  SVG: { 
-    linebreaks: { 
+  SVG: {
+    scale: 200,
+    linebreaks: {
       automatic: true,
-      width: "80% container", 
-    } 
+      width: "100% container",
+    }
   },
   TeX: {
     equationNumbers: {
