@@ -10,6 +10,7 @@
 {% if post.categories contains "scholarship" %} {% assign type_image = "images/scholarship_illustration.svg" %}{% endif %}
 {% if post.categories contains "design" %} {% assign type_image = "images/design_illustration.svg" %}{% endif %}
 {% if post.categories contains "publications" %} {% assign type_image = "images/publication_illustration.svg" %}{% endif %}
+{% if post.categories contains "blog" %} {% assign type_image = "images/cv_illustration.svg" %}{% endif %}
 <li class="cell">
     <a href="..{{post.url}}" type="{{post.type}}" keywords="{{post.type}},{{post.keywords}}">
       <div class='title'>{% if post.long_title %}<div class='long-title'>{% endif %}{{post.title}}{% if post.long_title %}</div>{% endif %}</div>
