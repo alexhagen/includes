@@ -1,13 +1,25 @@
-{% for post in site.categories[include.cat] %}
+{% if include.array %}
+  {% assign array = include.array %}
+{% else %}
+  {% assign array = site.categories[include.cat] %}
+{% endif %}
+
+{% for post in array %}
+{% if post.categories contains "code" %} {% assign type_image = "images/code_illustration.svg" %}{% endif %}
+{% if post.categories contains "simulations" %} {% assign type_image = "images/simulation_illustration.svg" %}{% endif %}
+{% if post.categories contains "scholarship" %} {% assign type_image = "images/scholarship_illustration.svg" %}{% endif %}
+{% if post.categories contains "design" %} {% assign type_image = "images/design_illustration.svg" %}{% endif %}
+{% if post.categories contains "publications" %} {% assign type_image = "images/publication_illustration.svg" %}{% endif %}
 <li class="cell">
     <a href="..{{post.url}}" type="{{post.type}}" keywords="{{post.type}},{{post.keywords}}">
       <div class='title'>{% if post.long_title %}<div class='long-title'>{% endif %}{{post.title}}{% if post.long_title %}</div>{% endif %}</div>
-      <div class='date'>{{ post.date }}</div>
+      <div class='date'>{{ post.date | date_to_long_string}}</div>
       <div class='keywords'>{{ post.keywords }}</div>
       <div class='type'>{{ post.type }}</div>
       {% if post.description %}<div class='description'>{{ post.description | escape | strip | remove: '"' }}</div>{% endif %}
-      {% if include.type_image %}<div class="cell-bg-image bg-screen"  style="background-image: url({{ site.baseurl }}{{ include.type_image }})"></div>
+      {% if type_image %}<div class="cell-bg-image bg-screen"  style="background-image: url({{ site.baseurl }}{{ type_image }})"></div>
       {% elsif post.image.feature %}<div class="cell-bg-image"  style="background-image: url({{ site.baseurl }}{{ post.image.feature }})"></div>{% endif %}
   </a>
 </li>
+{% assign type_image = "" %}
 {% endfor %}
