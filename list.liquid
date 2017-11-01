@@ -13,11 +13,13 @@
 {% if post.categories contains "blog" %} {% assign type_image = "images/cv_illustration.svg" %}{% endif %}
 <li class="cell">
     <a href="..{{post.url}}" type="{{post.type}}" keywords="{{post.type}},{{post.keywords}}">
-      <div class='title'>{% if post.long_title %}<div class='long-title'>{% endif %}{{post.title}}{% if post.long_title %}</div>{% endif %}</div>
+      <div class='title'>{% if post.long_title %}<div class='long-title'>{% endif %}{% if post.citation %}{{ post.title | truncatewords: 5 }}{% else %}{{post.title}}{% endif %}{% if post.long_title %}</div>{% endif %}</div>
       <div class='date'>{{ post.date | date_to_long_string}}</div>
       <div class='keywords'>{{ post.keywords }}</div>
       <div class='type'>{{ post.type }}</div>
       {% if post.description %}<div class='description'>{{ post.description | escape | strip | remove: '"' }}</div>{% endif %}
+      {% if post.citation %}<div class='citation'>{{ post.citation | escape | strip | remove: '"' }}</div>{% endif %}
+      {% if post.journal %}<div class='journal'>{{ post.journal | escape | strip | remove: '"' }}</div>{% endif %}
       {% if type_image %}<div class="cell-bg-image bg-screen"  style="background-image: url({{ site.baseurl }}{{ type_image }})"></div>
       {% elsif post.image.feature %}<div class="cell-bg-image"  style="background-image: url({{ site.baseurl }}{{ post.image.feature }})"></div>{% endif %}
   </a>
